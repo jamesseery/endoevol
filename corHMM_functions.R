@@ -26,3 +26,13 @@ transition_model = function(comparative.data, model_type, root_nonendo){
           node.state = "marginal",
           root.p = root)
 }
+
+Aikake_weight = function(model1, model2){
+  delta_AIC = sqrt( (model1$AIC - model2$AIC)^2 )
+  numerator = exp(-delta_AIC)
+  denominator = exp(-delta_AIC) + 1
+  if(model1$AIC < model2$AIC)
+    return( c(1/denominator, numerator/denominator) )
+  else
+    return( c(numerator/denominator, 1/denominator) )
+}
