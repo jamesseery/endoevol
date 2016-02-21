@@ -8,7 +8,8 @@ dist.check = function(variable){
     qqnorm(log(variable))
     qqline(log(variable))
 
-    par(op) # Reset plot display}
+    par(op) # Reset plot display
+}
 
 line.maker = function(pgls_model){
     abline(pgls_model$model$coef[1], pgls_model$model$coef[3], lty=2)
