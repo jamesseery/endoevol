@@ -69,3 +69,11 @@ ard.model.null.12omit = rayDISC(matched.tree,state.data,ntraits=1,charnum=1,mode
 ###different from zero. If the model fit is the same with transtions from state 1 to 2 dropped, then you can say that rates between these states are not significantly different from zero.
 
 ###You can do this iteratively to find which rates in the model are significantly different from zero. This will help determine what the most likely pathway for transitions between the states are.
+
+###To compare loglik scores using a chi square test
+comp.ard.er<- -2*(ard.model.null$loglik-er.model.null$loglik) ###order of function should have the better fitting model (higher loglik) listed first
+pchisq(comp.ard.er,df=1,lower.tail=FALSE)
+
+###To plot reconstruction
+col <- c("blue", "green", "red")
+plotRECON(matched.phy, ard.model.null$states, piecolors=col, cex=0.5, pie.cex=0.25, file=NULL, height=11, width=8.5, show.tip.label=TRUE, title=NULL, ...)###Use best fitting model for the states probability
