@@ -14,8 +14,8 @@ state_threshold = function(state, threshold){
   return(state_temp)
 }
 
-transition_model = function(comparative.data, model_type, root_nonendo){
-  if(root == TRUE)
+transition_model = function(comparative.data, model_type, root_nonendo = FALSE){
+  if(root_nonendo == TRUE)
     root = c(1,0,0) # This means that the model assumes that the root had state 1.
   else
     root = NULL # This means that the model assume that either root state is equally probable.
